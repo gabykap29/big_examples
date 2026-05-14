@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Big O - Complejidad Algorítmica Interactiva</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Floating Particles Background -->
+    <div id="particles"></div>
+
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <h1>🚀 Complejidad Algorítmica</h1>
+            <p>Descubre cómo predecir el tiempo de ejecución sin ejecutar el código</p>
+        </header>
+
+        <!-- Progress Bar -->
+        <div class="progress-container">
+            <div class="progress-steps">
+                <div class="step active" data-step="1">
+                    1
+                    <span class="step-label">Intro</span>
+                </div>
+                <div class="step" data-step="2">
+                    2
+                    <span class="step-label">O(1)</span>
+                </div>
+                <div class="step" data-step="3">
+                    3
+                    <span class="step-label">O(n)</span>
+                </div>
+                <div class="step" data-step="4">
+                    4
+                    <span class="step-label">O(n²)</span>
+                </div>
+                <div class="step" data-step="5">
+                    5
+                    <span class="step-label">Resumen</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Step 1: Introduction -->
+        <section class="content-section active" id="step-1">
+            <div class="card">
+                <h2>
+                    <span class="step-number">1</span>
+                    ¿Qué es la Complejidad Algorítmica?
+                </h2>
+                
+                <div class="question-card">
+                    <h3>🤔 Piensa en esto...</h3>
+                    <p style="font-size: 1.2rem; margin-bottom: 20px;">
+                        Un algoritmo tarda <strong>1 segundo</strong> en ordenar 1000 elementos
+                    </p>
+                    <p style="font-size: 1.1rem; margin-bottom: 25px;">
+                        ¿Cuánto tardará en ordenar 2000 elementos?
+                    </p>
+                    <div class="options">
+                        <button class="option-btn" onclick="checkAnswer(this, false)">
+                            2 segundos
+                        </button>
+                        <button class="option-btn" onclick="checkAnswer(this, false)">
+                            4 segundos
+                        </button>
+                        <button class="option-btn" onclick="checkAnswer(this, true)">
+                            ¡Depende!
+                        </button>
+                        <button class="option-btn" onclick="checkAnswer(this, false)">
+                            100 segundos
+                        </button>
+                    </div>
+                    <div class="hint-box" id="hint-1">
+                        <strong>💡 Correcto!</strong> Depende del algoritmo. Podría ser O(n), O(n²) o incluso O(n log n). 
+                        La notación Big O nos permite predecir esto sin ejecutar el código.
+                    </div>
+                </div>
+
+                <div class="info-box">
+                    <div class="info-box-icon">📊</div>
+                    <div class="info-box-content">
+                        <h3>¿Por qué es importante?</h3>
+                        <p>
+                            La <span class="highlight" data-tooltip="Big O es una notación matemática que describe el comportamiento de un algoritmo cuando el tamaño de entrada crece">notación Big O</span> 
+                            nos permite predecir cómo se comportará un algoritmo con grandes cantidades de datos, 
+                            sin necesidad de ejecutarlo. Es como predecir el clima: usamos modelos matemáticos 
+                            para anticipar resultados.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="explanation">
+                    <p>
+                        Imagina que tienes que llevar <span class="highlight" data-tooltip="n representa el número de elementos o tamaño de entrada">cajas</span> 
+                        desde tu casa hasta la casa de un familiar. La forma en que transportes esas cajas 
+                        determinará cuánto tiempo tardarás, y esa relación entre cajas y tiempo es exactamente 
+                        lo que mide la complejidad algorítmica.
+                    </p>
+                </div>
+
+                <div class="visualization">
+                    <div class="visualization-title">🎯 Haz clic en los elementos resaltados para aprender más</div>
+                    <div class="boxes-container">
+                        <div class="box interactive-element" data-tooltip="Cada caja representa un elemento de datos que nuestro algoritmo debe procesar">
+                            📦
+                        </div>
+                        <div class="box interactive-element" data-tooltip="Más cajas = más datos = más trabajo para el algoritmo">
+                            📦
+                        </div>
+                        <div class="box interactive-element" data-tooltip="¿Pero el tiempo crece lineal, cuadrático o permanece constante?">
+                            📦
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Step 2: O(1) -->
+        <section class="content-section" id="step-2">
+            <div class="card">
+                <h2>
+                    <span class="step-number">2</span>
+                    Complejidad Constante
+                    <span class="big-o-badge">O(1)</span>
+                </h2>
+
+                <div class="explanation">
+                    <p>
+                        Imagina que llevas las cajas en <span class="highlight" data-tooltip="El auto representa un algoritmo eficiente donde el tiempo no depende de la cantidad de elementos">auto</span>. 
+                        Tardas aproximadamente <strong>10 minutos</strong> en llegar y dejar las cajas, 
+                        sin importar si llevas 1 o 10 cajas.
+                    </p>
+                    <br>
+                    <p>
+                        ¿Por qué? Porque el auto tiene <span class="highlight" data-tooltip="En programación, esto sería como acceder directamente a un elemento por su índice">capacidad suficiente</span> 
+                        para llevar todas las cajas en un solo viaje. El tiempo es constante.
+                    </p>
+                </div>
+
+                <div class="visualization">
+                    <div class="visualization-title">
+                        🚗 Viaje en Auto (O(1)) - Haz clic en el auto
+                        <span class="tooltip-icon" data-tooltip="El tiempo es constante: siempre 10 minutos sin importar las cajas">?</span>
+                    </div>
+                    <div class="road-scene">
+                        <div class="road">
+                            <div class="car interactive-element" data-tooltip="¡Siempre tarda 10 minutos! El tiempo no depende del número de cajas">🚗</div>
+                        </div>
+                    </div>
+                    <div class="boxes-container">
+                        <div class="box interactive-element" data-tooltip="1 caja = 10 minutos">📦1</div>
+                        <div class="box interactive-element" data-tooltip="5 cajas = 10 minutos">📦5</div>
+                        <div class="box interactive-element" data-tooltip="10 cajas = 10 minutos">📦10</div>
+                    </div>
+                    <p style="margin-top: 20px; font-size: 1.1rem;">
+                        <strong>⏱️ Tiempo:</strong> Siempre 10 minutos (constante)
+                    </p>
+                </div>
+
+                <div class="info-box">
+                    <div class="info-box-icon">💻</div>
+                    <div class="info-box-content">
+                        <h3>En Programación</h3>
+                        <p>
+                            <span class="highlight" data-tooltip="Por ejemplo: acceder a un array por índice, insertar al principio de una lista ligada, o verificar si un número es par">O(1)</span> 
+                            significa que la operación toma el mismo tiempo sin importar el tamaño de los datos. 
+                            Es la complejidad más eficiente.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="comparison-grid">
+                    <div class="comparison-item interactive-element" data-tooltip="Acceder al primer elemento de una lista: siempre toma 1 paso">
+                        <div class="comparison-icon">🔍</div>
+                        <div class="comparison-title">Acceso Directo</div>
+                        <p>array[0] siempre toma 1 paso</p>
+                    </div>
+                    <div class="comparison-item interactive-element" data-tooltip="Verificar si un número es par: solo miramos el último dígito">
+                        <div class="comparison-icon">✅</div>
+                        <div class="comparison-title">Verificación Simple</div>
+                        <p>¿Es par? 1 operación</p>
+                    </div>
+                    <div class="comparison-item interactive-element" data-tooltip="Insertar al principio de una lista ligada: solo cambiamos un puntero">
+                        <div class="comparison-icon">➕</div>
+                        <div class="comparison-title">Inserción Simple</div>
+                        <p>insertFirst() = O(1)</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Step 3: O(n) -->
+        <section class="content-section" id="step-3">
+            <div class="card">
+                <h2>
+                    <span class="step-number">3</span>
+                    Complejidad Lineal
+                    <span class="big-o-badge">O(n)</span>
+                </h2>
+
+                <div class="explanation">
+                    <p>
+                        Ahora imagina que vas <span class="highlight" data-tooltip="Caminar representa un algoritmo donde debemos procesar cada elemento uno por uno">caminando</span>. 
+                        Ahora nos toma <strong>30 minutos</strong> y si tenemos muchas cajas, tendríamos que hacer 
+                        <span class="highlight" data-tooltip="Cada viaje adicional representa una operación adicional sobre los datos">varios viajes</span>.
+                    </p>
+                    <br>
+                    <p>
+                        Si 1 caja = 30 minutos, entonces 2 cajas = 60 minutos, 3 cajas = 90 minutos... 
+                        El tiempo crece <span class="highlight" data-tooltip="Lineal significa que si duplicamos los datos, duplicamos el tiempo">proporcionalmente</span> 
+                        al número de cajas.
+                    </p>
+                </div>
+
+                <div class="visualization">
+                    <div class="visualization-title">
+                        🚶 Viaje a Pie (O(n)) - Haz clic en la persona
+                        <span class="tooltip-icon" data-tooltip="El tiempo crece linealmente: más cajas = más viajes = más tiempo">?</span>
+                    </div>
+                    <div class="road-scene">
+                        <div class="road">
+                            <div class="walking-person interactive-element" data-tooltip="Voy muy lento... cada caja necesita un viaje separado">🚶</div>
+                        </div>
+                    </div>
+                    <div class="boxes-container">
+                        <div class="box interactive-element" data-tooltip="1 caja = 30 minutos">📦1</div>
+                        <div class="box interactive-element" data-tooltip="2 cajas = 60 minutos">📦2</div>
+                        <div class="box interactive-element" data-tooltip="3 cajas = 90 minutos">📦3</div>
+                        <div class="box interactive-element" data-tooltip="n cajas = n × 30 minutos">📦n</div>
+                    </div>
+                    <p style="margin-top: 20px; font-size: 1.1rem;">
+                        <strong>⏱️ Tiempo:</strong> 30 × n minutos (lineal)
+                    </p>
+                </div>
+
+                <div class="info-box">
+                    <div class="info-box-icon">💻</div>
+                    <div class="info-box-content">
+                        <h3>En Programación</h3>
+                        <p>
+                            <span class="highlight" data-tooltip="Por ejemplo: recorrer un array, buscar un elemento, o sumar todos los elementos">O(n)</span> 
+                            significa que debemos revisar cada elemento al menos una vez. Si duplicamos los datos, 
+                            duplicamos el tiempo. Es como hacer una lista de verificación.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="comparison-grid">
+                    <div class="comparison-item interactive-element" data-tooltip="Buscar un elemento: debemos revisar uno por uno hasta encontrarlo">
+                        <div class="comparison-icon">🔎</div>
+                        <div class="comparison-title">Búsqueda Lineal</div>
+                        <p>Revisar cada elemento</p>
+                    </div>
+                    <div class="comparison-item interactive-element" data-tooltip="Sumar todos los elementos: debemos visitar cada uno">
+                        <div class="comparison-icon">➕</div>
+                        <div class="comparison-title">Sumar Elementos</div>
+                        <p>sum(array) = O(n)</p>
+                    </div>
+                    <div class="comparison-item interactive-element" data-tooltip="Encontrar el máximo: debemos comparar con todos">
+                        <div class="comparison-icon">🏆</div>
+                        <div class="comparison-title">Encontrar Máximo</div>
+                        <p>max(array) = O(n)</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Step 4: O(n²) -->
+        <section class="content-section" id="step-4">
+            <div class="card">
+                <h2>
+                    <span class="step-number">4</span>
+                    Complejidad Cuadrática
+                    <span class="big-o-badge">O(n²)</span>
+                </h2>
+
+                <div class="explanation">
+                    <p>
+                        Ahora viene lo interesante. Tu familiar pone una <span class="highlight" data-tooltip="Esta condición absurda representa un algoritmo ineficiente como Bubble Sort">condición absurda</span>: 
+                        "Cada vez que bajes una caja, debes compararla con todas las que ya dejaste".
+                    </p>
+                    <br>
+                    <p>
+                        Esto es lo que pasa con algoritmos como <span class="highlight" data-tooltip="Bubble Sort, Selection Sort e Insertion Sort son ejemplos de O(n²)">Bubble Sort</span>. 
+                        Cada elemento debe compararse con todos los demás.
+                    </p>
+                </div>
+
+                <div class="visualization">
+                    <div class="visualization-title">
+                        📦 Comparación de Cajas (O(n²)) - Haz clic en las cajas
+                        <span class="tooltip-icon" data-tooltip="Cada nueva caja se compara con TODAS las anteriores">?</span>
+                    </div>
+                    <div style="background: white; padding: 30px; border-radius: 15px; margin: 20px 0; width: 100%;">
+                        <div id="comparison-steps" style="text-align: left; font-family: monospace; font-size: 1.1rem; line-height: 2;">
+                            <div class="comparison-step" style="padding: 10px; background: #e3f2fd; margin: 5px 0; border-radius: 8px;">
+                                <strong>Paso 1:</strong> Llevamos caja 1 → <span style="color: #4caf50;">1 operación</span>
+                            </div>
+                            <div class="comparison-step" style="padding: 10px; background: #e8f5e9; margin: 5px 0; border-radius: 8px;">
+                                <strong>Paso 2:</strong> Llevamos caja 2 + comparamos con 1 anterior → <span style="color: #ff9800;">2 operaciones</span>
+                            </div>
+                            <div class="comparison-step" style="padding: 10px; background: #fff3e0; margin: 5px 0; border-radius: 8px;">
+                                <strong>Paso 3:</strong> Llevamos caja 3 + comparamos con 2 anteriores → <span style="color: #ff5722;">3 operaciones</span>
+                            </div>
+                            <div class="comparison-step" style="padding: 10px; background: #fce4ec; margin: 5px 0; border-radius: 8px;">
+                                <strong>Paso 10:</strong> Llevamos caja 10 + comparamos con 9 anteriores → <span style="color: #f44336;">10 operaciones</span>
+                            </div>
+                        </div>
+                        <div style="margin-top: 20px; text-align: center; font-size: 1.2rem;">
+                            <strong>Total:</strong> 1 + 2 + 3 + ... + 10 = <span style="color: #f44336; font-weight: bold;">55 operaciones</span>
+                        </div>
+                    </div>
+                    <div class="boxes-container">
+                        <div class="box interactive-element" data-tooltip="Caja 1: 1 comparación">1</div>
+                        <div class="box interactive-element" data-tooltip="Caja 2: 2 comparaciones">2</div>
+                        <div class="box interactive-element" data-tooltip="Caja 3: 3 comparaciones">3</div>
+                        <div class="box interactive-element" data-tooltip="Caja n: n comparaciones">n</div>
+                    </div>
+                    <p style="margin-top: 20px; font-size: 1.1rem;">
+                        <strong>⏱️ Tiempo:</strong> 1 + 2 + 3 + ... + n = n(n+1)/2 ≈ <span style="color: #f44336;">O(n²)</span>
+                    </p>
+                </div>
+
+                <div class="question-card">
+                    <h3>🧮 ¿Cuánto tardará con 2000 elementos?</h3>
+                    <p style="font-size: 1.1rem; margin-bottom: 20px;">
+                        Si 1000 elementos tardan 1 segundo (O(n²))
+                    </p>
+                    <div class="options">
+                        <button class="option-btn" onclick="checkAnswer2(this, false)">
+                            2 segundos
+                        </button>
+                        <button class="option-btn" onclick="checkAnswer2(this, true)">
+                            4 segundos
+                        </button>
+                        <button class="option-btn" onclick="checkAnswer2(this, false)">
+                            2000 segundos
+                        </button>
+                    </div>
+                    <div class="hint-box" id="hint-2">
+                        <strong>💡 Correcto!</strong> Con O(n²), si duplicamos n, el tiempo se cuadruplica: (2n)² = 4n².<br>
+                        Entonces: 1s × (2000/1000)² = 1s × 4 = <strong>4 segundos</strong>
+                    </div>
+                </div>
+
+                <div class="info-box">
+                    <div class="info-box-icon">💻</div>
+                    <div class="info-box-content">
+                        <h3>En Programación</h3>
+                        <p>
+                            <span class="highlight" data-tooltip="Bubble Sort, Selection Sort, Insertion Sort y comparar todos con todos">O(n²)</span> 
+                            ocurre cuando tenemos <strong>bucles anidados</strong>. Por ejemplo, comparar cada elemento 
+                            con todos los demás. Es ineficiente para grandes cantidades de datos.
+                        </p>
+                    </div>
+                </div>
+
+                <div style="background: white; border-radius: 15px; padding: 30px; margin: 20px 0;">
+                    <h3 style="margin-bottom: 15px;">Visualización de Crecimiento</h3>
+                    <div class="chart-container">
+                        <svg class="chart-svg" viewBox="0 0 500 250">
+                            <!-- Grid -->
+                            <line x1="50" y1="220" x2="450" y2="220" stroke="#ddd" stroke-width="2"/>
+                            <line x1="50" y1="20" x2="50" y2="220" stroke="#ddd" stroke-width="2"/>
+                            
+                            <!-- O(1) - Constant -->
+                            <line x1="50" y1="180" x2="450" y2="180" stroke="#4caf50" stroke-width="3" stroke-dasharray="5,5"/>
+                            <text x="460" y="185" fill="#4caf50" font-size="12">O(1)</text>
+                            
+                            <!-- O(n) - Linear -->
+                            <polyline points="50,180 150,140 250,100 350,60 450,20" fill="none" stroke="#2196f3" stroke-width="3"/>
+                            <text x="460" y="25" fill="#2196f3" font-size="12">O(n)</text>
+                            
+                            <!-- O(n²) - Quadratic -->
+                            <path d="M 50,180 Q 150,180 200,150 T 300,50 T 450,20" fill="none" stroke="#f44336" stroke-width="3"/>
+                            <text x="460" y="45" fill="#f44336" font-size="12">O(n²)</text>
+                            
+                            <!-- Labels -->
+                            <text x="250" y="240" text-anchor="middle" fill="#666" font-size="14">Elementos (n)</text>
+                            <text x="20" y="120" text-anchor="middle" fill="#666" font-size="14" transform="rotate(-90 20 120)">Tiempo</text>
+                        </svg>
+                    </div>
+                    <p style="text-align: center; color: #666; margin-top: 10px;">
+                        <span style="color: #4caf50;">■</span> O(1) - Constante 
+                        <span style="color: #2196f3;">■</span> O(n) - Lineal 
+                        <span style="color: #f44336;">■</span> O(n²) - Cuadrática
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Step 5: Summary -->
+        <section class="content-section" id="step-5">
+            <div class="card">
+                <h2>
+                    <span class="step-number">5</span>
+                    Resumen y Comparación
+                </h2>
+
+                <div class="explanation">
+                    <p>
+                        ¡Felicidades! Ahora entiendes los conceptos básicos de 
+                        <span class="highlight" data-tooltip="Big O nos permite comparar algoritmos y predecir su rendimiento">complejidad algorítmica</span>. 
+                        Veamos una comparación final:
+                    </p>
+                </div>
+
+                <table class="complexity-table">
+                    <thead>
+                        <tr>
+                            <th>Notación</th>
+                            <th>Nombre</th>
+                            <th>Ejemplo</th>
+                            <th>Crecimiento</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="interactive-element" data-tooltip="El tiempo nunca cambia, ideal para operaciones simples">
+                            <td><strong style="color: #4caf50;">O(1)</strong></td>
+                            <td>Constante</td>
+                            <td>Acceso directo, auto con cajas</td>
+                            <td>🟢 Plano</td>
+                        </tr>
+                        <tr class="interactive-element" data-tooltip="El tiempo crece proporcionalmente, aceptable para muchos casos">
+                            <td><strong style="color: #2196f3;">O(n)</strong></td>
+                            <td>Lineal</td>
+                            <td>Búsqueda secuencial, caminar con cajas</td>
+                            <td>🔵 Recto</td>
+                        </tr>
+                        <tr class="interactive-element" data-tooltip="El tiempo crece muy rápido, evitar para grandes datos">
+                            <td><strong style="color: #f44336;">O(n²)</strong></td>
+                            <td>Cuadrática</td>
+                            <td>Bubble Sort, comparar todos con todos</td>
+                            <td>🔴 Exponencial</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="summary-grid">
+                    <div class="summary-card interactive-element" data-tooltip="Siempre el mismo tiempo: 10 minutos">
+                        <h3>🚗 O(1) - Constante</h3>
+                        <div class="formula">f(n) = c</div>
+                        <p>
+                            <strong>Auto:</strong> 1 caja = 10 min<br>
+                            <strong>Auto:</strong> 10 cajas = 10 min
+                        </p>
+                    </div>
+                    <div class="summary-card interactive-element" data-tooltip="Tiempo proporcional: más cajas = más tiempo">
+                        <h3>🚶 O(n) - Lineal</h3>
+                        <div class="formula">f(n) = n</div>
+                        <p>
+                            <strong>Caminando:</strong> 1 caja = 30 min<br>
+                            <strong>Caminando:</strong> 10 cajas = 300 min
+                        </p>
+                    </div>
+                    <div class="summary-card interactive-element" data-tooltip="Tiempo cuadrático: el peor de los casos mostrados">
+                        <h3>📦 O(n²) - Cuadrática</h3>
+                        <div class="formula">f(n) = n²</div>
+                        <p>
+                            <strong>Comparando:</strong> 1 caja = 1 op<br>
+                            <strong>Comparando:</strong> 10 cajas = 55 op
+                        </p>
+                    </div>
+                </div>
+
+                <div class="info-box">
+                    <div class="info-box-icon">🎯</div>
+                    <div class="info-box-content">
+                        <h3>Consejo Final</h3>
+                        <p>
+                            Cuando elijas un <span class="highlight" data-tooltip="Siempre busca el algoritmo con menor complejidad que resuelva tu problema">algoritmo</span>, 
+                            considera cuántos datos vas a procesar. Para pocos datos, O(n²) puede ser aceptable. 
+                            Para miles o millones de elementos, busca O(n log n) o mejor.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="question-card">
+                    <h3>🎓 ¿Listo para practicar?</h3>
+                    <p style="font-size: 1.1rem; margin-bottom: 20px;">
+                        Ahora puedes identificar la complejidad de algoritmos reales
+                    </p>
+                    <div class="options">
+                        <button class="option-btn" onclick="location.reload()">
+                            🔄 Repetir Tutorial
+                        </button>
+                        <button class="option-btn" onclick="alert('¡Sigue practicando con algoritmos reales!')">
+                            ✅ Entendido
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Navigation Buttons -->
+        <div class="nav-buttons">
+            <button class="btn btn-secondary" id="prevBtn" onclick="changeStep(-1)" disabled>
+                ← Anterior
+            </button>
+            <button class="btn btn-primary" id="nextBtn" onclick="changeStep(1)">
+                Siguiente →
+            </button>
+        </div>
+    </div>
+
+    <!-- Tooltip Container -->
+    <div class="tooltip" id="tooltip"></div>
+
+    <script src="script.js"></script>
+</body>
+</html>
