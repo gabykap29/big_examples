@@ -202,3 +202,32 @@ document.addEventListener('keydown', function(e) {
     if (e.key === 'ArrowRight') changeStep(1);
     if (e.key === 'ArrowLeft') changeStep(-1);
 });
+
+// Copy repository URL to clipboard
+function copyRepoUrl() {
+    const repoUrl = 'https://@github.com:gabykap29/big_examples';
+    
+    navigator.clipboard.writeText(repoUrl).then(() => {
+        showToast();
+    }).catch(err => {
+        console.error('Error al copiar:', err);
+        // Fallback para navegadores antiguos
+        const textArea = document.createElement('textarea');
+        textArea.value = repoUrl;
+        document.body.appendChild(textArea);
+        textArea.select();
+        document.execCommand('copy');
+        document.body.removeChild(textArea);
+        showToast();
+    });
+}
+
+// Show toast notification
+function showToast() {
+    const toast = document.getElementById('toast');
+    toast.classList.add('show');
+    
+    setTimeout(() => {
+        toast.classList.remove('show');
+    }, 3000);
+}
