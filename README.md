@@ -2,6 +2,8 @@
 
 Una visualización interactiva educativa para aprender sobre complejidad algorítmica y notación Big O, dirigida a estudiantes de programación.
 
+url: (https://big0example.netlify.app/)
+
 ## 📖 Descripción del Proyecto
 
 Este proyecto explica de forma visual e interactiva los conceptos fundamentales de la complejidad algorítmica utilizando la analogía de transportar cajas:
